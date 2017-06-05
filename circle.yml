@@ -7,7 +7,7 @@
 
 general:
     artifacts:
-        - /home/ubuntu/testingapp/app/build/outputs/apk/
+        - $CIRCLE_ARTIFACTS/testingapp/app/build/outputs/apk/
 
 machine:
     environment:
