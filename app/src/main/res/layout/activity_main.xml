@@ -7,12 +7,32 @@
     tools:context="com.helloapp.testingapp.MainActivity">
 
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
-        android:layout_centerInParent="true"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="235dp" />
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/txt_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current Date"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"/>
+
+
+    </LinearLayout>
+
+
+
 </RelativeLayout>

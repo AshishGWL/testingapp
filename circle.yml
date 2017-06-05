@@ -47,6 +47,6 @@ test:
 #  post:
 #      - cp -r app/build/outputs $CIRCLE_ARTIFACTS
 #      - cp -r app/build/outputs/androidTest-results/connected/ $CIRCLE_TEST_REPORTS
-override:
-        - ./gradlew assemble
-        - cp -r app/build/outputs $CIRCLE_ARTIFACTS
+  override:
+      - ./gradlew assemble
+      - cp -r app/build/outputs $CIRCLE_ARTIFACTS

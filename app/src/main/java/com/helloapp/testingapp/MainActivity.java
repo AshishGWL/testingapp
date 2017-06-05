@@ -6,12 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.TextView;
 
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private int mDay, mMonth, mYear;
+    private TextView mDateTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,19 +26,20 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         mMonth = calendar.get(Calendar.MONTH);
         mYear = calendar.get(Calendar.YEAR);
 
-        Log.e("Date: ", mDay + "/" + mMonth + "/" + mYear);
-
+        mDateTv = (TextView) findViewById(R.id.txt_date);
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showDatePicker();
             }
         });
+        updateDate();
 
     }
 
     private void updateDate(){
-        Log.e("Date: ", mDay + "/" + mMonth + "/" + mYear);
+        String date = "Date: " + mDay + "/" + (mMonth + 1) + "/" + mYear;
+        mDateTv.setText(date);
     }
 
     private void showDatePicker(){
