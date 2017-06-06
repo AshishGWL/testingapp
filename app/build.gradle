@@ -12,6 +12,16 @@ android {
         versionName "1.0.$buildNumber"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        release {
+            storeFile file(System.getenv("KEYSTORE")?:"/home/ashish-mathur/Android/keystore/MyKeyStore.jks")
+            storePassword System.getenv("KEYSTORE_PASSWORD")
+            keyAlias System.getenv("KEY_ALIAS")
+            keyPassword System.getenv("KEY_PASSWORD")
+        }
+    }
+
     buildTypes {
         debug {
             minifyEnabled false
@@ -20,6 +30,8 @@ android {
 
         release {
             minifyEnabled false
+            zipAlignEnabled true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

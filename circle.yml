@@ -11,6 +11,7 @@ general:
 
 machine:
     environment:
+        KEYSTORE: ${HOME}/${CIRCLE_PROJECT_REPONAME}/sigining.keystore
         ANDROID_HOME: /usr/local/android-sdk-linux
         ADB_INSTALL_TIMEOUT: 60
         GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx3072M -XX:+HeapDumpOnOutOfMemoryError"'
@@ -23,6 +24,7 @@ dependencies:
         - echo $GOOGLE_SERVICES_JSON > app/google-services.json
         - echo y | android update sdk --no-ui --all --filter tools,android-25,platform-tools,extra-google-m2repository,extra-google-google_play_services,extra-android-support,extra-android-m2repository
         - echo y | android update sdk --no-ui --all --filter build-tools-25.0.2
+        - bash ./misc/download_keystore.sh
 
     cache_directories:
         - /usr/local/android-sdk-linux/tools
