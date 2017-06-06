@@ -13,6 +13,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -20,10 +25,11 @@ android {
     }
 
     applicationVariants.all { variant ->
-        def versionName = name
+        def appVersion = variant.getVersionName();
+        appVersion = appVersion + "-" + name
 
         variant.outputs.each { output ->
-            output.outputFile = new File(output.outputFile.parent, "TestingApp-" + versionName + ".apk")
+            output.outputFile = new File(output.outputFile.parent, "TestingApp-" + appVersion + ".apk")
 //            output.outputFile = new File(output.outputFile.parent, "iRap-" + versionName + "-" + releaseTime() + ".apk")
         }
     }
